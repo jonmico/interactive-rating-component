@@ -1,5 +1,6 @@
 import StarIcon from './components/StarIcon/StarIcon';
 import CardText from './components/CardText/CardText';
+import Rating from './components/Rating/Rating';
 
 import { styled } from 'styled-components';
 
@@ -31,6 +32,7 @@ export default function App() {
       <StyledCard>
         <StarIcon />
         <CardText />
+        <Rating />
       </StyledCard>
     </StyledWrapper>
   );
