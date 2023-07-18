@@ -45,7 +45,7 @@ const StyledCardCenter = styled(StyledCard)`
   justify-content: center;
 `;
 
-const ratingList: RatingType[] = [
+const ratings: RatingType[] = [
   { id: crypto.randomUUID(), rating: 1 },
   { id: crypto.randomUUID(), rating: 2 },
   { id: crypto.randomUUID(), rating: 3 },
@@ -54,7 +54,6 @@ const ratingList: RatingType[] = [
 ];
 
 export default function App() {
-  const [ratings, setRatings] = useState<RatingType[]>(ratingList);
   const [selectedRating, setSelectedRating] = useState<RatingType | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
