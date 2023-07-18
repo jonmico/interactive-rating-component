@@ -17,6 +17,11 @@ export const ListItem = styled.li<ListItemProps>`
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: 768px) {
+    height: 45px;
+    width: 45px;
+  }
+
   &:hover {
     background-color: ${({ $isSelectedRating }) =>
       $isSelectedRating ? 'hsl(25, 97%, 53%)' : 'hsl(217, 12%, 63%)'};

@@ -8,6 +8,9 @@ import CardText from './components/CardText/CardText';
 import Rating from './components/Rating/Rating';
 import SubmitButton from './components/SubmitButton/SubmitButton';
 import ListItem from './components/ListItem/ListItem';
+import SubmitIcon from './components/SubmitIcon/SubmitIcon';
+import SubmitRating from './components/SubmitRating/SubmitRating';
+import SubmitText from './components/SubmitText/SubmitText';
 
 const StyledWrapper = styled.div`
   height: 100vh;
@@ -29,6 +32,17 @@ const StyledCard = styled.div`
   );
   border-radius: 20px;
   padding: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    min-width: 290px;
+  }
+`;
+
+const StyledCardCenter = styled(StyledCard)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ratingList: RatingType[] = [
@@ -42,28 +56,39 @@ const ratingList: RatingType[] = [
 export default function App() {
   const [ratings, setRatings] = useState<RatingType[]>(ratingList);
   const [selectedRating, setSelectedRating] = useState<RatingType | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   function handleClickRating(rating: RatingType) {
-    setSelectedRating(rating);
+    selectedRating === rating
+      ? setSelectedRating(null)
+      : setSelectedRating(rating);
   }
 
   return (
     <StyledWrapper>
-      <StyledCard>
-        <StarIcon />
-        <CardText />
-        <Rating>
-          {ratings.map((rating) => (
-            <ListItem
-              key={rating.id}
-              rating={rating}
-              selectedRating={selectedRating}
-              handleClick={() => handleClickRating(rating)}
-            />
-          ))}
-        </Rating>
-        <SubmitButton />
-      </StyledCard>
+      {!isSubmitted ? (
+        <StyledCard>
+          <StarIcon />
+          <CardText />
+          <Rating>
+            {ratings.map((rating) => (
+              <ListItem
+                key={rating.id}
+                rating={rating}
+                selectedRating={selectedRating}
+                handleClick={() => handleClickRating(rating)}
+              />
+            ))}
+          </Rating>
+          <SubmitButton setIsSubmitted={setIsSubmitted} />
+        </StyledCard>
+      ) : (
+        <StyledCardCenter>
+          <SubmitIcon />
+          <SubmitRating selectedRating={selectedRating} ratings={ratings} />
+          <SubmitText />
+        </StyledCardCenter>
+      )}
     </StyledWrapper>
   );
 }
