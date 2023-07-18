@@ -5,6 +5,7 @@ export const List = styled.ol`
   justify-content: space-between;
   align-items: center;
   list-style: none;
+  margin-bottom: 1.75rem;
 `;
 
 export const ListItem = styled.li`

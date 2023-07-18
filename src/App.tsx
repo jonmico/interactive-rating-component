@@ -1,6 +1,7 @@
 import StarIcon from './components/StarIcon/StarIcon';
 import CardText from './components/CardText/CardText';
 import Rating from './components/Rating/Rating';
+import SubmitButton from './components/SubmitButton/SubmitButton';
 
 import { styled } from 'styled-components';
 
@@ -14,8 +15,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledCard = styled.div`
-  width: 20%;
-  min-width: 385px;
+  width: 15%;
+  min-width: 350px;
   max-width: 400px;
   background: radial-gradient(
     circle at top,
@@ -33,6 +34,7 @@ export default function App() {
         <StarIcon />
         <CardText />
         <Rating />
+        <SubmitButton />
       </StyledCard>
     </StyledWrapper>
   );
